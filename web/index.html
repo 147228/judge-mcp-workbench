@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6f7f5">
+  <title>JUDGE · 快速判断工作台</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<svg class="sprite" aria-hidden="true"><defs>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="m12 3 2.6 6.4L21 12l-6.4 2.6L12 21l-2.6-6.4L3 12l6.4-2.6L12 3Z"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  <symbol id="i-route" viewBox="0 0 24 24"><path d="M6 5v14m0-7h7a5 5 0 0 0 5-5V5m-5 14h5"/><circle cx="6" cy="4" r="2"/><circle cx="6" cy="20" r="2"/><circle cx="18" cy="4" r="2"/><circle cx="18" cy="19" r="2"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9s-8-4-8-9V6l8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
+  <symbol id="i-bars" viewBox="0 0 24 24"><path d="M5 20V12m7 8V4m7 16V8M3 20h18"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l-2 2V11.5a9.5 9.5 0 0 1 19 0Z"/><path d="M7 10h10M7 14h6"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 7-5 5 5 5m8-10 5 5-5 5M14 4l-4 16"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M15 8V3H3v12h5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6m0-10v1"/></symbol>
+</defs></svg>
+
+<aside class="sidebar">
+  <a href="#judge" class="brand" aria-label="JUDGE 首页"><span class="brand-mark"><svg><use href="#i-spark"/></svg></span><span>judge<span class="brand-dot">.</span></span></a>
+  <div class="workspace-label">PERSONAL WORKSPACE</div>
+  <nav aria-label="主导航">
+    <button class="nav-item active" data-view="judge" aria-label="判断工作台" title="判断工作台"><svg><use href="#i-grid"/></svg><span>判断工作台</span><span class="nav-dot"></span></button>
+    <button class="nav-item" data-view="repair" aria-label="ATM 报修助手" title="ATM 报修助手"><svg><use href="#i-chat"/></svg><span>ATM 报修助手</span></button>
+    <button class="nav-item" id="history-nav" aria-label="运行记录" title="运行记录"><svg><use href="#i-clock"/></svg><span>运行记录</span><span class="nav-count" id="nav-count">0</span></button>
+  </nav>
+  <div class="sidebar-bottom">
+    <div class="side-note"><div class="mini-symbol">↗</div><b>小判断，大动作。</b><p>把一次次窄判断，<br>变成清晰的下一步。</p><a href="https://typesafe.ai/blog/introducing-system-one-models-and-jev" target="_blank" rel="noreferrer">了解 Jev 的设计思路 <span>↗</span></a></div>
+    <div class="profile"><span class="avatar">南</span><div><b>我的工作空间</b><small>本地运行 · 密钥仅在服务端</small></div></div>
+  </div>
+</aside>
+
+<main>
+  <header class="topbar"><div class="breadcrumb">工作空间 <span>/</span> <b id="crumb">判断工作台</b></div><div class="top-actions"><span class="connection" id="connection"><i></i>正在连接</span><button class="icon-button" id="trace-open" aria-label="查看调用过程" title="查看调用过程"><svg><use href="#i-code"/></svg></button></div></header>
+  <div class="content">
+  <section id="judge-view">
+    <div class="hero"><div><div class="eyebrow"><span></span> DECISION WORKSPACE</div><h1>让信息，直接走向行动<span class="title-dot">.</span></h1><p>给出上下文，定义一个问题。让 AI 帮你分类、检查、评分。</p></div><div class="model-badge"><span class="model-icon"><svg><use href="#i-spark"/></svg></span><div><small>判断引擎</small><b id="model-name">DeepSeek Flash</b></div><span class="live-dot"></span></div></div>
+
+    <div class="templates" aria-label="判断场景">
+      <button class="template active" data-template="route"><span class="template-icon mint"><svg><use href="#i-route"/></svg></span><span class="template-text"><b>工单智能分流</b><small>给客户的问题，找到正确的团队</small></span><span class="template-type">Choice</span></button>
+      <button class="template" data-template="claim"><span class="template-icon lavender"><svg><use href="#i-shield"/></svg></span><span class="template-text"><b>文案承诺检查</b><small>快速识别需要复核的绝对承诺</small></span><span class="template-type">Boolean</span></button>
+      <button class="template" data-template="value"><span class="template-icon peach"><svg><use href="#i-bars"/></svg></span><span class="template-text"><b>内容价值评分</b><small>按统一标准，筛选值得看的内容</small></span><span class="template-type">Score</span></button>
+    </div>
+
+    <div class="workbench">
+      <section class="card input-card"><div class="card-head"><div class="heading-with-step"><span class="step-num">01</span><h2>定义你的判断</h2></div><span class="quiet-tag" id="template-label">工单分流</span></div>
+        <div class="mode-switch" role="group" aria-label="判断类型"><button class="selected" data-kind="choice"><svg><use href="#i-route"/></svg>分类选择</button><button data-kind="boolean"><svg><use href="#i-check"/></svg>是非判断</button><button data-kind="score"><svg><use href="#i-bars"/></svg>等级评分</button></div>
+        <label class="field-label" for="question">你想判断什么？</label><textarea id="question" class="question-input" rows="2" maxlength="1500">这条客户工单应该交给哪个团队处理？不属于任何团队或资料不足时，选择“其他 / 信息不足”。</textarea>
+        <div id="options-field"><label class="field-label" for="options">候选答案 <span>每行一个，可自行修改</span></label><textarea id="options" class="options-input" rows="2" maxlength="1500">账号与登录
+支付与订单
+设备故障
+其他 / 信息不足</textarea></div>
+        <div class="field-label context-label"><label for="state">判断材料</label><span id="char-count">0 / 12,000</span></div>
+        <div class="editor"><div class="editor-bar"><span class="editor-dot"></span>context.txt <span>示例材料 · 可直接编辑</span></div><textarea id="state" maxlength="12000" placeholder="粘贴需要判断的材料，或描述当前情况…">客户反馈：我在登录时一直收不到短信验证码，已经等了十分钟，重试三次仍然不行。我的订单昨天已经支付成功，希望能尽快恢复账号登录。</textarea></div>
+        <div class="input-footer"><span class="foot-hint"><svg><use href="#i-info"/></svg>每次只判断一个具体问题</span><button class="text-button hidden" id="cancel-run">取消</button><button class="run-button" id="run-judge"><span>运行判断</span><kbd>⌘ ↵</kbd><svg><use href="#i-arrow"/></svg></button></div>
+      </section>
+
+      <section class="card result-card"><div class="card-head"><div class="heading-with-step"><span class="step-num">02</span><h2>判断结果</h2></div><span class="result-state" id="result-state">等待输入</span></div>
+        <div id="empty-result" class="empty-result"><div class="decision-art" aria-hidden="true"><div class="art-grid"></div><span class="art-node source-node"><svg><use href="#i-code"/></svg></span><span class="art-line first-line"></span><span class="art-node judge-node"><svg><use href="#i-spark"/></svg></span><span class="art-line second-line"></span><span class="art-node target-node"><svg><use href="#i-check"/></svg></span><span class="art-mini n1"></span><span class="art-mini n2"></span></div><h3>一次判断，一个明确的方向</h3><p>运行后，结果、原文依据和实际耗时<br>会出现在这里。</p><div class="empty-tags"><span>有边界的答案</span><span>可查看的依据</span></div></div>
+        <div id="loading-result" class="loading-result hidden"><div class="orbit-loader"><svg><use href="#i-spark"/></svg></div><h3 id="loading-title">正在连接判断工具</h3><p>结果正在生成，请稍候</p><div class="progress-track"><span id="judge-progress"></span></div><span class="loading-time" id="loading-time">0.0s</span></div>
+        <div id="filled-result" class="filled-result hidden"><div class="answer-top"><span class="answer-kind" id="answer-kind">分类结果</span><button class="icon-button" id="copy-answer" aria-label="复制判断结果"><svg><use href="#i-copy"/></svg></button></div><div class="answer-main"><span class="answer-icon"><svg><use href="#i-check"/></svg></span><h3 id="answer-value"></h3></div><div id="answer-options" class="answer-options"></div><p id="answer-reason" class="answer-reason"></p><div class="result-metrics"><div><span><svg><use href="#i-clock"/></svg>端到端耗时</span><b id="result-latency">—</b></div><div><span>输出类型</span><b id="result-type">—</b></div><div><span>使用 tokens</span><b id="result-tokens">—</b></div></div><div class="evidence-box"><div class="evidence-label"><svg><use href="#i-shield"/></svg>原文依据</div><div id="evidence-quotes"></div></div><div id="review-note" class="review-note hidden">资料不足或依据需要核查，建议人工复核。</div><details class="raw-details"><summary><span><svg><use href="#i-code"/></svg>查看结构化结果</span><span>JSON</span></summary><pre id="result-json"></pre></details></div>
+        <div class="result-bottom"><span><span class="small-dot"></span>Jev 式交互 · DeepSeek 驱动</span><button class="text-button" id="export-result" disabled><svg><use href="#i-download"/></svg>导出结果</button></div>
+      </section>
+    </div>
+
+    <section class="history-section" id="history-section"><div class="section-title"><div><h2>最近的判断 <span id="history-count">0</span></h2><p>保存在当前浏览器，点击记录可重新查看。</p></div><button class="text-button" id="clear-history">清空记录</button></div><div class="history-table"><div class="history-table-head"><span>判断场景</span><span>结果</span><span>耗时</span><span>时间</span></div><div id="history-rows"><div class="history-empty">还没有运行记录。试试上面的示例，开始你的第一次判断。</div></div></div></section>
+  </section>
+
+  <section id="repair-view" class="hidden"><div class="hero"><div><div class="eyebrow"><span></span> SERVICE WORKSPACE</div><h1>从一句报修，到一张工单<span class="title-dot">.</span></h1><p>描述设备故障，助手会追问缺失信息，并推进模拟报修流程。</p></div><span class="quiet-tag demo-tag">教学模拟</span></div><div class="repair-layout"><section class="card chat-card"><div class="card-head"><div class="heading-with-step"><span class="step-num">01</span><h2>报修对话</h2></div><button class="text-button" id="reset-chat">新对话</button></div><div class="chat-messages" id="chat-messages"><div class="chat-welcome"><span class="welcome-icon"><svg><use href="#i-chat"/></svg></span><h3>有什么可以帮你？</h3><p>告诉我 ATM 编号和故障现象。<br>支持吞卡、不出钞、系统故障。</p><div class="chat-examples"><button data-message="请帮我报修 ATM-001，银行卡被吞了，屏幕提示无法退卡。">ATM-001 吞卡，请帮我报修 <span>↗</span></button><button data-message="我的银行卡被 ATM 吞了，请帮我报修。">暂时不知道设备号 <span>↗</span></button><button data-message="你好，今天心情不错。">先打个招呼 <span>↗</span></button></div></div></div><form id="chat-form" class="chat-composer"><label for="chat-input" class="sr-only">报修消息</label><textarea id="chat-input" rows="2" maxlength="4000" placeholder="描述你的问题…"></textarea><button class="run-button" id="chat-send" aria-label="发送消息"><svg><use href="#i-arrow"/></svg></button></form><div class="chat-disclaimer">工单节点为教学模拟，真实银行卡与设备问题请联系银行。</div></section><section class="card ticket-card"><div class="card-head"><div class="heading-with-step"><span class="step-num">02</span><h2>处理进度</h2></div></div><div class="ticket-intro"><span class="quiet-tag">实时进度</span><h3 id="ticket-status">等待报修</h3><p id="ticket-id">工单创建后，编号会显示在这里。</p></div><ol class="ticket-stages" id="ticket-stages"><li><span>1</span><div><b>已受理</b><small>登记故障，生成工单</small></div></li><li><span>2</span><div><b>运维人员派单</b><small>分配模拟维修任务</small></div></li><li><span>3</span><div><b>现场检修</b><small>推进模拟检查节点</small></div></li><li><span>4</span><div><b>维修完成</b><small>返回最终工单结果</small></div></li></ol><div class="ticket-note"><svg><use href="#i-info"/></svg><p>只有信息齐全的明确报修才会建单。闲聊、范围外问题和信息补充不会直接创建工单。</p></div></section></div></section>
+  <footer class="page-footer"><span>JUDGE <span>·</span> 把判断留给 AI，把行动握在手里。</span><span>结果为辅助判断，请核查重要决定。</span></footer>
+  </div>
+</main>
+<div id="trace-backdrop" class="drawer-backdrop hidden"></div><aside id="trace-drawer" class="trace-drawer hidden" aria-label="调用过程"><div class="drawer-head"><div><span class="eyebrow">UNDER THE HOOD</span><h2>这次判断如何发生</h2></div><button class="icon-button" id="trace-close" aria-label="关闭调用过程"><svg><use href="#i-close"/></svg></button></div><div class="trace-flow"><span>浏览器</span> → <span>Client</span> → <span>MCP Server</span></div><p class="trace-hint">以下内容来自本次真实调用；密钥不会发送到浏览器。</p><div id="trace-events" class="trace-events"><p>运行一次判断或发送报修消息后，可以在这里查看工具调用与节点。</p></div></aside><div class="toast hidden" id="toast" role="status"></div>
+<script src="/app.js"></script>
+</body></html>

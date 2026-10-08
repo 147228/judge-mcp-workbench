@@ -1,0 +1,186 @@
+{
+  "kind": "real_cloud_llm_acceptance",
+  "provider": "https://api.deepseek.com",
+  "model": "deepseek-flash",
+  "at": "2026-10-08T14:23:30.973214+08:00",
+  "cases": [
+    {
+      "case": "闲聊",
+      "prompt": "你好，今天心情不错。",
+      "expected_mcp_calls": 0,
+      "reply": "你好！很高兴听到你心情不错 😊\n\n我是 ATM 报修教学演示助手，可以帮你登记 ATM 的**吞卡、不出钞、系统故障**这三类模拟工单。有需要报修的话，告诉我设备号和故障现象就行～",
+      "tool_results": [],
+      "mcp_calls": 0,
+      "llm_requests": 1,
+      "total_tokens": 963,
+      "progress": [],
+      "seconds": 0.776,
+      "passed": true
+    },
+    {
+      "case": "吞卡报修",
+      "prompt": "请帮我报修 ATM-001，银行卡被吞了，屏幕提示无法退卡。",
+      "expected_mcp_calls": 1,
+      "reply": "模拟工单已创建（教学演示，非真实维修）：\n\n- 设备号：ATM-001\n- 故障类型：吞卡\n- 现象：银行卡被吞，屏幕提示无法退卡\n- 工单号：ATM-2aa17441850d4456b5b2d685837b233b\n- 状态：维修完成（模拟节点：已受理 → 运维人员派单 → 现场检修 → 维修完成）\n\n请注意：这是模拟工单，不代表真实机器已修复。吞卡后建议尽快联系发卡行网点或客服，按银行流程办理取卡。",
+      "tool_results": [
+        {
+          "name": "atm_repair",
+          "result": {
+            "ok": true,
+            "result": {
+              "ticket_id": "ATM-2aa17441850d4456b5b2d685837b233b",
+              "atm_id": "ATM-001",
+              "fault_type": "吞卡",
+              "describe": "银行卡被吞，屏幕提示无法退卡",
+              "status": "维修完成",
+              "created_at": "2026-10-08T14:23:32+08:00",
+              "history": [
+                {
+                  "status": "已受理",
+                  "at": "2026-10-08T14:23:32+08:00"
+                },
+                {
+                  "status": "运维人员派单",
+                  "at": "2026-10-08T14:23:32+08:00"
+                },
+                {
+                  "status": "现场检修",
+                  "at": "2026-10-08T14:23:32+08:00"
+                },
+                {
+                  "status": "维修完成",
+                  "at": "2026-10-08T14:23:33+08:00"
+                }
+              ],
+              "simulation": true
+            }
+          },
+          "cached": false
+        }
+      ],
+      "mcp_calls": 1,
+      "llm_requests": 2,
+      "total_tokens": 2393,
+      "progress": [
+        {
+          "progress": 1.0,
+          "total": 4.0,
+          "message": "ATM-2aa17441850d4456b5b2d685837b233b | 已受理（模拟）"
+        },
+        {
+          "progress": 2.0,
+          "total": 4.0,
+          "message": "ATM-2aa17441850d4456b5b2d685837b233b | 运维人员派单（模拟）"
+        },
+        {
+          "progress": 3.0,
+          "total": 4.0,
+          "message": "ATM-2aa17441850d4456b5b2d685837b233b | 现场检修（模拟）"
+        },
+        {
+          "progress": 4.0,
+          "total": 4.0,
+          "message": "ATM-2aa17441850d4456b5b2d685837b233b | 维修完成（模拟）"
+        }
+      ],
+      "seconds": 2.866,
+      "passed": true
+    },
+    {
+      "case": "范围外问题",
+      "prompt": "我的手机黑屏了，请帮我修手机。",
+      "expected_mcp_calls": 0,
+      "reply": "抱歉，手机维修不在我的职责范围内。我只协助登记 ATM 的吞卡、不出钞、系统故障这三类模拟报修。\n\n如果您的银行卡被 ATM 吞了，或遇到取款不出钞、机器死机报错等情况，可以告诉我设备号和具体现象，我帮您登记模拟工单。",
+      "tool_results": [],
+      "mcp_calls": 0,
+      "llm_requests": 1,
+      "total_tokens": 981,
+      "progress": [],
+      "seconds": 0.888,
+      "passed": true
+    },
+    {
+      "case": "缺号追问与多轮补充",
+      "prompt": "我的银行卡被 ATM 吞了，请帮我报修。",
+      "expected_mcp_calls": 0,
+      "reply": "请提供 ATM 设备号，我才能登记报修（故障类型：吞卡）。",
+      "tool_results": [],
+      "mcp_calls": 0,
+      "llm_requests": 1,
+      "total_tokens": 935,
+      "progress": [],
+      "seconds": 0.678,
+      "passed": true
+    },
+    {
+      "case": "缺号追问与多轮补充",
+      "prompt": "设备编号是 ATM-002。",
+      "expected_mcp_calls": 1,
+      "reply": "已登记模拟工单：\n\n- 工单号：ATM-b0ef69eb95654697b89fe9ade108efa2\n- 设备号：ATM-002\n- 故障类型：吞卡\n- 状态：维修完成（模拟节点：已受理 → 运维人员派单 → 现场检修 → 维修完成）\n\n提醒：这是教学模拟工单，不代表真实 ATM 已维修。请尽快联系发卡银行处理取回银行卡。",
+      "tool_results": [
+        {
+          "name": "atm_repair",
+          "result": {
+            "ok": true,
+            "result": {
+              "ticket_id": "ATM-b0ef69eb95654697b89fe9ade108efa2",
+              "atm_id": "ATM-002",
+              "fault_type": "吞卡",
+              "describe": "用户银行卡被 ATM 吞卡",
+              "status": "维修完成",
+              "created_at": "2026-10-08T14:23:37+08:00",
+              "history": [
+                {
+                  "status": "已受理",
+                  "at": "2026-10-08T14:23:37+08:00"
+                },
+                {
+                  "status": "运维人员派单",
+                  "at": "2026-10-08T14:23:37+08:00"
+                },
+                {
+                  "status": "现场检修",
+                  "at": "2026-10-08T14:23:37+08:00"
+                },
+                {
+                  "status": "维修完成",
+                  "at": "2026-10-08T14:23:37+08:00"
+                }
+              ],
+              "simulation": true
+            }
+          },
+          "cached": false
+        }
+      ],
+      "mcp_calls": 1,
+      "llm_requests": 2,
+      "total_tokens": 2385,
+      "progress": [
+        {
+          "progress": 1.0,
+          "total": 4.0,
+          "message": "ATM-b0ef69eb95654697b89fe9ade108efa2 | 已受理（模拟）"
+        },
+        {
+          "progress": 2.0,
+          "total": 4.0,
+          "message": "ATM-b0ef69eb95654697b89fe9ade108efa2 | 运维人员派单（模拟）"
+        },
+        {
+          "progress": 3.0,
+          "total": 4.0,
+          "message": "ATM-b0ef69eb95654697b89fe9ade108efa2 | 现场检修（模拟）"
+        },
+        {
+          "progress": 4.0,
+          "total": 4.0,
+          "message": "ATM-b0ef69eb95654697b89fe9ade108efa2 | 维修完成（模拟）"
+        }
+      ],
+      "seconds": 2.237,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

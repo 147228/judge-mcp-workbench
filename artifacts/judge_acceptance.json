@@ -1,0 +1,221 @@
+[
+  {
+    "request": {
+      "state": "客户一直收不到登录短信验证码，订单已支付成功。",
+      "question": "根据客户当前主要诉求，分给哪个团队？",
+      "kind": "choice",
+      "options": [
+        "账号与登录",
+        "支付与订单",
+        "设备故障",
+        "其他 / 信息不足"
+      ]
+    },
+    "events": [
+      {
+        "event": "start",
+        "data": {
+          "tool": "quick_judge"
+        }
+      },
+      {
+        "event": "progress",
+        "data": {
+          "progress": 1.0,
+          "total": 4.0,
+          "message": "接收输入与判断标准"
+        }
+      },
+      {
+        "event": "progress",
+        "data": {
+          "progress": 2.0,
+          "total": 4.0,
+          "message": "模型正在分析条件"
+        }
+      },
+      {
+        "event": "progress",
+        "data": {
+          "progress": 3.0,
+          "total": 4.0,
+          "message": "校验返回类型与原文依据"
+        }
+      },
+      {
+        "event": "progress",
+        "data": {
+          "progress": 4.0,
+          "total": 4.0,
+          "message": "判断完成"
+        }
+      },
+      {
+        "event": "result",
+        "data": {
+          "kind": "choice",
+          "decision": {
+            "choice": "账号与登录",
+            "boolean": null,
+            "score": null,
+            "reason": "客户主要诉求是收不到登录短信验证码，属于登录验证问题，应分给账号与登录团队。",
+            "evidence": [
+              "客户一直收不到登录短信验证码"
+            ],
+            "needs_review": false
+          },
+          "model": "deepseek-flash",
+          "inference_ms": 1209,
+          "total_tokens": 362,
+          "probability": null,
+          "probability_note": "此实现不提供校准概率；判断结果需要按实际场景验证。",
+          "end_to_end_ms": 1471
+        }
+      }
+    ],
+    "passed": true
+  },
+  {
+    "request": {
+      "state": "我们的产品保证所有用户在七天内学会英语，学习效果100%有效。",
+      "question": "文案是否作出了无条件的效果保证？",
+      "kind": "boolean",
+      "options": []
+    },
+    "events": [
+      {
+        "event": "start",
+        "data": {
+          "tool": "quick_judge"
+        }
+      },
+      {
+        "event": "progress",
+        "data": {
+          "progress": 1.0,
+          "total": 4.0,
+          "message": "接收输入与判断标准"
+        }
+      },
+      {
+        "event": "progress",
+        "data": {
+          "progress": 2.0,
+          "total": 4.0,
+          "message": "模型正在分析条件"
+        }
+      },
+      {
+        "event": "progress",
+        "data": {
+          "progress": 3.0,
+          "total": 4.0,
+          "message": "校验返回类型与原文依据"
+        }
+      },
+      {
+        "event": "progress",
+        "data": {
+          "progress": 4.0,
+          "total": 4.0,
+          "message": "判断完成"
+        }
+      },
+      {
+        "event": "result",
+        "data": {
+          "kind": "boolean",
+          "decision": {
+            "choice": null,
+            "boolean": true,
+            "score": null,
+            "reason": "文案使用“保证”“100%有效”等绝对化表述，作出无条件效果承诺。",
+            "evidence": [
+              "保证所有用户在七天内学会英语",
+              "学习效果100%有效"
+            ],
+            "needs_review": false
+          },
+          "model": "deepseek-flash",
+          "inference_ms": 734,
+          "total_tokens": 338,
+          "probability": null,
+          "probability_note": "此实现不提供校准概率；判断结果需要按实际场景验证。",
+          "end_to_end_ms": 754
+        }
+      }
+    ],
+    "passed": true
+  },
+  {
+    "request": {
+      "state": "仅使用测试账号也能快速登录，详细步骤为：创建账号，验证手机号，登录后在设置页开启通知。",
+      "question": "实用性评分1~5：1是空泛宣传，3是主题明确但没有步骤，5是具体可执行的步骤。",
+      "kind": "score",
+      "options": []
+    },
+    "events": [
+      {
+        "event": "start",
+        "data": {
+          "tool": "quick_judge"
+        }
+      },
+      {
+        "event": "progress",
+        "data": {
+          "progress": 1.0,
+          "total": 4.0,
+          "message": "接收输入与判断标准"
+        }
+      },
+      {
+        "event": "progress",
+        "data": {
+          "progress": 2.0,
+          "total": 4.0,
+          "message": "模型正在分析条件"
+        }
+      },
+      {
+        "event": "progress",
+        "data": {
+          "progress": 3.0,
+          "total": 4.0,
+          "message": "校验返回类型与原文依据"
+        }
+      },
+      {
+        "event": "progress",
+        "data": {
+          "progress": 4.0,
+          "total": 4.0,
+          "message": "判断完成"
+        }
+      },
+      {
+        "event": "result",
+        "data": {
+          "kind": "score",
+          "decision": {
+            "choice": null,
+            "boolean": null,
+            "score": 5,
+            "reason": "给出了创建账号、验证手机号、登录后开启通知的具体可执行步骤，主题明确且可操作。",
+            "evidence": [
+              "创建账号，验证手机号，登录后在设置页开启通知"
+            ],
+            "needs_review": false
+          },
+          "model": "deepseek-flash",
+          "inference_ms": 718,
+          "total_tokens": 371,
+          "probability": null,
+          "probability_note": "此实现不提供校准概率；判断结果需要按实际场景验证。",
+          "end_to_end_ms": 740
+        }
+      }
+    ],
+    "passed": true
+  }
+]

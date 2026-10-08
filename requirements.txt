@@ -1,0 +1,10 @@
+# 固定 MCP 1.x 接口，避免 SDK 2.x 的破坏性变更影响课堂复现。
+mcp==1.30.0
+openai>=1.60.0,<3
+httpx>=0.27.0,<1
+anyio>=4.9.0,<5
+python-dotenv>=1.0.0,<2
+jsonschema>=4.20.0,<5
+pydantic>=2.11.0,<3
+starlette>=0.37.2,<2
+uvicorn>=0.31.1,<1
