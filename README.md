@@ -220,3 +220,11 @@ python scripts/llm_acceptance.py --debug
 - [DeepSeek Tool Calls 官方文档](https://api-docs.deepseek.com/guides/tool_calls/)
 - [Jev / System One 官方介绍](https://typesafe.ai/blog/introducing-system-one-models-and-jev)
 - [TypeSafe Choice](https://docs.typesafe.ai/primitives/choice)、[Score](https://docs.typesafe.ai/primitives/score)、[Noul](https://docs.typesafe.ai/primitives/noul)
+
+## 维护者与个人网站
+
+本仓库维护者：[丸美小沐（GitHub @147228）](https://github.com/147228)。
+
+- [个人网站：丸美小沐的博客](https://147227.xyz/)
+- [关于维护者](https://147227.xyz/about/)
+- [项目与作品总览](https://147227.xyz/projects/)
